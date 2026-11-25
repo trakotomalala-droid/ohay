@@ -669,6 +669,134 @@ body::before{background:radial-gradient(60% 40% at 0% 0%, var(--h1), transparent
 @media (prefers-reduced-motion:reduce){.intro .hk-grand{animation:none}}
 @media (min-width:760px){.hk-grand{height:250px}.hk-bilan{height:200px}.hk-accueil{height:170px}}
 
+/* ---------- Guide de premier démarrage ---------- */
+body.g-ouvert{overflow:hidden}
+.guide{--g-acc:#FFC533;position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;
+  background:linear-gradient(180deg,#F4F5FB 0%,#ECEDF8 100%);color:var(--txt,#1F2340);overflow:hidden;
+  padding:calc(env(safe-area-inset-top) + 10px) 20px calc(env(safe-area-inset-bottom) + 16px)}
+.g-fond-fr{--g-acc:#4C8DFF}.g-fond-maths{--g-acc:#FF8A3D}.g-fond-svt{--g-acc:#2FBF7A}.g-fond-en{--g-acc:#9B5CF6}.g-fond-multi{--g-acc:#FF8A3D}
+.g-halo{position:absolute;inset:-20%;pointer-events:none;opacity:.55;transition:background .8s ease;
+  background:radial-gradient(42% 30% at 50% 30%,color-mix(in srgb,var(--g-acc) 45%,transparent),transparent 70%),
+             radial-gradient(40% 30% at 0% 100%,rgba(185,180,255,.45),transparent 70%),radial-gradient(40% 30% at 100% 80%,rgba(255,215,190,.45),transparent 70%)}
+.g-haut,.g-corps,.g-bas{position:relative;width:100%;max-width:460px}
+.g-haut{display:flex;align-items:center;justify-content:space-between;gap:12px;height:52px;flex:none}
+.g-logo{height:26px;width:auto}
+.g-rond,.g-rond-vide{width:44px;height:44px;flex:none;border-radius:50%}
+.g-rond{display:grid;place-items:center;border:1px solid #fff;background:rgba(255,255,255,.75);color:#1F2340;box-shadow:0 4px 14px rgba(70,80,130,.12);cursor:pointer}
+.g-points{display:flex;gap:6px;align-items:center}
+.g-points i{display:block;width:7px;height:7px;border-radius:99px;background:rgba(31,35,64,.16);transition:width .35s ease,background .35s ease}
+.g-points i.vu{background:rgba(31,35,64,.38)}
+.g-points i.on{width:22px;background:#1F2340}
+.g-passer{border:0;background:none;font:inherit;font-weight:700;font-size:15px;color:#626884;padding:10px 4px;cursor:pointer;min-width:44px}
+.g-corps{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;overflow-y:auto;overflow-x:hidden;padding:6px 0}
+.g-slide{width:100%;text-align:center;display:flex;flex-direction:column;align-items:center}
+.g-slide>*{animation:g-monte .55s cubic-bezier(.2,.8,.2,1) both}
+.g-slide>*:nth-child(2){animation-delay:.08s}.g-slide>*:nth-child(3){animation-delay:.16s}.g-slide>*:nth-child(4){animation-delay:.24s}.g-slide>*:nth-child(5){animation-delay:.32s}
+.g-in-d{animation:g-droite .45s cubic-bezier(.2,.8,.2,1) both}
+.g-in-g{animation:g-gauche .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes g-droite{from{transform:translateX(48px);opacity:0}to{transform:none;opacity:1}}
+@keyframes g-gauche{from{transform:translateX(-48px);opacity:0}to{transform:none;opacity:1}}
+@keyframes g-monte{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
+
+.g-scene{position:relative;display:flex;justify-content:center;align-items:flex-end;margin-bottom:10px}
+.g-scene-p{margin-bottom:6px}
+.g-sol{position:absolute;bottom:2px;left:50%;width:120px;height:16px;margin-left:-60px;border-radius:50%;background:radial-gradient(closest-side,rgba(31,35,64,.16),transparent);animation:g-ombre 3.2s ease-in-out infinite;z-index:-1}
+.g-hk{display:block}
+.g-hk-xl{height:min(300px,36vh)}
+.g-hk-l{height:min(230px,30vh)}
+.g-hk-m{height:min(150px,20vh)}
+.g-hk-s{height:56px}
+.g-hk .hk-teinte{transition:opacity .45s ease}
+.g-saute{animation:g-arrive .8s cubic-bezier(.3,1.6,.5,1) both,g-flotte 3.2s ease-in-out .8s infinite}
+.g-flotte{animation:g-flotte 3.2s ease-in-out infinite}
+.g-retard{animation-delay:-1.6s}
+@keyframes g-arrive{0%{transform:translateY(40px) scale(.6);opacity:0}60%{transform:translateY(-10px) scale(1.04);opacity:1}100%{transform:none}}
+@keyframes g-flotte{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes g-ombre{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.85);opacity:.7}}
+
+.g-sur{font-weight:700;font-size:14px;color:#626884;margin:2px 0 6px;letter-spacing:.01em}
+.g-titre{font-family:var(--titre,Sora,sans-serif);font-weight:700;font-size:clamp(24px,6.4vw,30px);line-height:1.15;margin:0 0 10px;max-width:22ch}
+.g-titre b{color:#C98A00}
+.g-titre-haut{margin-top:4px}
+.g-texte{font-size:16.5px;line-height:1.5;color:#3A3F58;margin:0 auto;max-width:34ch}
+.g-texte b{color:#1F2340}
+
+.g-champ{margin-top:20px;width:100%;max-width:320px;font:inherit;font-size:20px;font-weight:600;text-align:center;padding:16px 18px;border-radius:18px;border:2px solid #fff;background:rgba(255,255,255,.85);box-shadow:0 6px 20px rgba(70,80,130,.12);color:#1F2340;outline:none}
+.g-champ:focus{border-color:var(--g-acc);box-shadow:0 0 0 4px color-mix(in srgb,var(--g-acc) 25%,transparent)}
+
+.g-mats{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px;max-width:360px}
+.g-mat{width:62px;height:62px;border-radius:20px;border:2px solid #fff;background:rgba(255,255,255,.8);box-shadow:0 4px 14px rgba(70,80,130,.12);display:grid;place-items:center;padding:6px;cursor:pointer;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.g-mat img,.g-mat svg{width:100%;height:100%;object-fit:contain}
+.g-mat[aria-pressed="true"]{border-color:var(--c);transform:translateY(-4px) scale(1.08);box-shadow:0 10px 24px color-mix(in srgb,var(--c) 35%,transparent)}
+.g-mat:active{transform:scale(.94)}
+.g-mat-nom{margin:14px 0 0;font-family:var(--titre,Sora,sans-serif);font-weight:700;font-size:18px;transition:color .4s ease;min-height:1.4em}
+
+.g-chemin{list-style:none;margin:18px 0 0;padding:0;width:100%;max-width:380px;text-align:left;position:relative}
+.g-chemin::before{content:"";position:absolute;left:33px;top:28px;bottom:28px;width:3px;border-radius:3px;background:linear-gradient(#4C8DFF,color-mix(in srgb,#4C8DFF 20%,transparent));transform-origin:top;animation:g-trait 1.2s ease .2s both}
+@keyframes g-trait{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.g-chemin li{position:relative;display:flex;align-items:center;gap:12px;padding:6px 12px 6px 4px;margin-bottom:6px;border-radius:18px;background:rgba(255,255,255,.7);border:1px solid #fff;box-shadow:0 4px 14px rgba(70,80,130,.08);animation:g-monte .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(.25s + var(--k) * .14s)}
+.g-chemin li .haiko{width:60px;display:flex;justify-content:center}
+.g-chemin b{display:block;font-family:var(--titre,Sora,sans-serif);font-size:16px}
+.g-chemin span{font-size:14px;color:#626884;line-height:1.3}
+
+.g-etoiles{display:flex;gap:10px;justify-content:center;margin:-6px 0 12px}
+.g-etoiles span{display:block;width:44px;height:44px;animation:g-pop .5s cubic-bezier(.3,1.8,.5,1) both;animation-delay:calc(.5s + var(--k) * .22s)}
+.g-etoiles svg{width:100%;height:100%;filter:drop-shadow(0 4px 8px rgba(242,183,5,.45))}
+@keyframes g-pop{from{transform:scale(0) rotate(-40deg);opacity:0}to{transform:none;opacity:1}}
+
+.g-duo{display:flex;gap:18px;justify-content:center;align-items:flex-end;margin-bottom:14px}
+.g-duo>div{display:flex;flex-direction:column;align-items:center;gap:8px}
+.g-puce{display:inline-block;padding:8px 14px;border-radius:999px;background:#fff;font-weight:700;font-size:14px;color:#1A8A55;box-shadow:0 4px 14px rgba(70,80,130,.12)}
+.g-pulse{animation:g-pulse 1.8s ease-in-out infinite}
+@keyframes g-pulse{0%,100%{box-shadow:0 0 0 0 rgba(47,191,122,.45),0 4px 14px rgba(70,80,130,.12)}50%{box-shadow:0 0 0 10px rgba(47,191,122,0),0 4px 14px rgba(70,80,130,.12)}}
+
+.g-classes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;width:100%;max-width:320px}
+.g-classes button{font:inherit;font-family:var(--titre,Sora,sans-serif);font-size:19px;font-weight:700;padding:16px 10px;border-radius:18px;border:2px solid #fff;background:rgba(255,255,255,.8);color:#1F2340;cursor:pointer;box-shadow:0 4px 14px rgba(70,80,130,.1);transition:transform .2s ease,background .2s ease}
+.g-classes button small{display:block;font-family:var(--texte,inherit);font-size:12px;font-weight:600;color:#8A8FA8}
+.g-classes button[aria-pressed="true"]{background:#1F2340;color:#fff;border-color:#1F2340;transform:scale(1.03)}
+.g-classes button:disabled{opacity:.55;cursor:default}
+
+.g-bas{flex:none;display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:10px}
+.g-btn{width:100%;max-width:460px;background:#1F2340!important;color:#fff!important;font-size:18px;padding:18px;border-radius:999px}
+.g-btn:disabled{opacity:.4}
+.g-compte{color:#8A8FA8;font-weight:600;font-size:12.5px}
+.guide button:focus-visible{outline:3px solid var(--g-acc);outline-offset:3px}
+
+@media (min-width:760px){
+  .guide{background:rgba(31,35,64,.32);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);justify-content:center;padding:24px}
+  .guide>.g-halo{display:none}
+  .guide>.g-haut,.guide>.g-corps,.guide>.g-bas{background:linear-gradient(180deg,#F4F5FB,#ECEDF8);max-width:520px;padding-left:28px;padding-right:28px}
+  .guide>.g-haut{border-radius:32px 32px 0 0;padding-top:18px;height:auto}
+  .guide>.g-corps{flex:none;height:min(600px,calc(100vh - 220px))}
+  .guide>.g-bas{border-radius:0 0 32px 32px;padding-bottom:22px;box-shadow:0 30px 60px rgba(31,35,64,.25)}
+}
+@media (max-height:640px){.g-hk-xl{height:24vh}.g-hk-l{height:22vh}.g-chemin li{padding:2px 10px 2px 2px}.g-hk-s{height:46px}.g-texte{font-size:15px}}
+
+/* Revoir le guide (page Progrès) */
+.g-revoir{display:flex;align-items:center;gap:14px;width:100%;margin-top:22px;padding:12px 18px;text-align:left;font:inherit;cursor:pointer;border:1px solid #fff}
+.g-revoir-hk{height:74px}
+.g-revoir b{display:block;font-family:var(--titre,Sora,sans-serif);font-size:16px;color:#1F2340}
+.g-revoir small{color:#626884;font-size:14px}
+
+/* ---------- Visite guidée ---------- */
+.tour{position:fixed;inset:0;z-index:1000}
+.tour-trou{position:fixed;border-radius:24px;box-shadow:0 0 0 9999px rgba(31,35,64,.55);transition:all .45s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.tour-trou::after{content:"";position:absolute;inset:-4px;border-radius:inherit;border:3px solid #fff;animation:t-anneau 1.6s ease-in-out infinite}
+@keyframes t-anneau{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(1.03)}}
+.tour-bulle{position:fixed;display:flex;gap:10px;align-items:flex-start;padding:16px 16px 14px 10px;border-radius:24px;background:#fff;box-shadow:0 18px 44px rgba(31,35,64,.3);transition:top .45s cubic-bezier(.2,.8,.2,1),left .45s cubic-bezier(.2,.8,.2,1)}
+.tour-pop{animation:g-monte .4s cubic-bezier(.2,.8,.2,1) both}
+.tour-hk{height:84px;flex:none}
+.tour-bulle b{display:block;font-family:var(--titre,Sora,sans-serif);font-size:17px;color:#1F2340;margin-top:2px}
+.tour-bulle p{font-size:15px;line-height:1.45;color:#3A3F58;margin:4px 0 12px}
+.tour-actions{display:flex;align-items:center;gap:10px}
+.tour-btn{width:auto!important;padding:11px 18px!important;font-size:15px!important;background:#1F2340!important;color:#fff!important;border-radius:999px}
+.tour-passer{border:0;background:none;font:inherit;font-weight:700;font-size:14px;color:#626884;cursor:pointer;padding:8px 4px}
+.tour-actions small{margin-left:auto;color:#8A8FA8;font-weight:600;font-size:12.5px}
+
+@media (prefers-reduced-motion:reduce){
+  .guide *,.tour *{animation:none!important;transition:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -4510,9 +4638,9 @@ function hkFiltres(){
   document.body.insertAdjacentHTML("beforeend", svg);
 }
 // pose : 1 portrait, 2 salut, 3 échauffement, 4 découverte, 5 entraînement, 6 défi, 7 réfléchit, 8 bravo, 9 pas grave, 10 récompense
-function haiko(pose, cls = ""){
+function haiko(pose, cls = "", sujet){
   const h = HAIKO[pose]; if (!h) return ""; hkFiltres();
-  const s = document.documentElement.dataset.sujet;
+  const s = sujet === undefined ? document.documentElement.dataset.sujet : sujet;
   const teinte = s && COULEURS[s] ? `<img class="hk-teinte" src="${h.img}" alt="" style="filter:url(#hk-${s});-webkit-mask-image:url(${h.masque});mask-image:url(${h.masque})">` : "";
   return `<span class="haiko hk-p${pose} ${cls}" aria-hidden="true"><img src="${h.img}" alt="">${teinte}</span>`;
 }
@@ -4642,7 +4770,8 @@ function vueProgres(){
     <div class="section-titre"><h2>Tes héros</h2><small>Niveau ${NIVEAUX[S.classe].nom} · ${NIVEAUX[S.classe].classe}</small></div>
     <div class="heros">${Object.keys(HEROS).map(carteHeros).join("")}</div>
     <div class="section-titre"><h2>Rangs</h2><small>Une étape par palier d'étoiles</small></div>
-    <div class="rangs">${RANGS.map(x => `<span class="${x===r?'actuel':tot>=x.min?'ok':''}">${x.nom} · ${x.sens}</span>`).join("")}</div>`;
+    <div class="rangs">${RANGS.map(x => `<span class="${x===r?'actuel':tot>=x.min?'ok':''}">${x.nom} · ${x.sens}</span>`).join("")}</div>
+    <button class="carte-verre g-revoir" onclick="guideOuvrir()">${haiko(2,"g-revoir-hk","")}<span><b>Revoir le guide avec Haiko</b><small>Comment marche Ohay, en 1 minute</small></span></button>`;
 }
 function vueProf(){
   const l = LECON(S.profLecon) || TOUTES[0], ch = l.chapitre;
@@ -5004,7 +5133,195 @@ function demanderNom(){
   document.getElementById("f-nom").addEventListener("submit", ev => { ev.preventDefault(); S.nom = document.getElementById("nom").value.trim(); sauver(); dlgSlot.innerHTML = ""; rendre(); });
 }
 rendre();
-if (!S.nom) demanderNom();
+
+/* ---------- Guide de premier démarrage, avec Haiko ---------- */
+const G_MAT = ["maths","fr","en","svt","pc","hg","ec"];
+const G_NOM = {maths:"Mathématiques", fr:"Français", en:"Anglais", svt:"SVT", pc:"Physique-chimie", hg:"Histoire-géo", ec:"Éducation civique"};
+const G_ETAPES = [
+  [2, "L'histoire", "Une situation de la vie, à Madagascar"],
+  [3, "Échauffement", "3 petites questions pour réveiller ton cerveau"],
+  [4, "Découverte", "On comprend la leçon, écran par écran"],
+  [5, "Entraînement", "Tu pratiques, avec une 2e chance"],
+  [6, "Défi", "Un vrai problème, avec des indices"]
+];
+let G = null, G_T = [];
+const gStop = () => { G_T.forEach(t => { clearInterval(t); clearTimeout(t); }); G_T = []; };
+const gMoinsAnim = () => window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function gSlides(){
+  const s = [];
+  s.push({id:"salut", fond:"jaune", html:() => `
+    <div class="g-scene">${haiko(2, "g-hk g-hk-xl g-saute", "maths")}<div class="g-sol"></div></div>
+    <p class="g-sur">Bienvenue dans Ohay</p>
+    <h2 class="g-titre">Salut&nbsp;! Moi, c'est <b>Haiko</b>.</h2>
+    <p class="g-texte">Je t'accompagne dans tes leçons, de la 6ème jusqu'à la Terminale. On apprend en comprenant, pas par cœur.</p>`});
+  if (!G.avaitNom) s.push({id:"nom", fond:"jaune", html:() => `
+    <div class="g-scene g-scene-p">${haiko(9, "g-hk g-hk-m g-flotte", "")}</div>
+    <h2 class="g-titre">Et toi, comment tu t'appelles&nbsp;?</h2>
+    <p class="g-texte">Ton prénom reste sur ce téléphone.</p>
+    <label class="vh" for="g-nom">Prénom</label>
+    <input id="g-nom" class="g-champ" autocomplete="given-name" placeholder="Ton prénom" maxlength="20" value="${esc(G.nom)}">`});
+  s.push({id:"couleurs", fond:"multi", html:() => `
+    <div class="g-scene">${haiko(2, "g-hk g-hk-l g-flotte", "maths")}</div>
+    <h2 class="g-titre">${G.nom ? `Enchanté, ${esc(G.nom)}&nbsp;! ` : ""}Mon visage change de couleur</h2>
+    <p class="g-texte">Chaque matière a sa couleur. Touche une matière pour voir.</p>
+    <div class="g-mats" role="group" aria-label="Matières">${G_MAT.map(m => `<button class="g-mat" data-gmat="${m}" style="--c:${COULEURS[m][0]}" aria-label="${G_NOM[m]}">${icone(m)}</button>`).join("")}</div>
+    <p class="g-mat-nom" aria-live="polite">Mathématiques</p>`});
+  s.push({id:"etapes", fond:"fr", html:() => `
+    <h2 class="g-titre g-titre-haut">Une leçon, c'est 5 étapes</h2>
+    <p class="g-texte">Environ 15 minutes. La barre en haut te montre où tu en es.</p>
+    <ol class="g-chemin">${G_ETAPES.map(([p, n, t], k) => `<li style="--k:${k}">${haiko(p, "g-hk g-hk-s", "fr")}<div><b>${n}</b><span>${t}</span></div></li>`).join("")}</ol>`});
+  s.push({id:"etoiles", fond:"maths", html:() => `
+    <div class="g-scene">${haiko(8, "g-hk g-hk-l g-saute", "maths")}</div>
+    <div class="g-etoiles">${[0,1,2].map(k => `<span style="--k:${k}">${ETOILE("#FFD873")}</span>`).join("")}</div>
+    <h2 class="g-titre">Gagne des étoiles</h2>
+    <p class="g-texte">Jusqu'à 3 étoiles par leçon. Avec <b>2 étoiles</b>, la leçon suivante s'ouvre. Tu gagnes aussi des points Vola et des héros.</p>`});
+  s.push({id:"aide", fond:"svt", html:() => `
+    <div class="g-duo"><div>${haiko(7, "g-hk g-hk-m g-flotte", "svt")}<span class="g-puce g-pulse">Voir un indice</span></div>
+      <div>${haiko(9, "g-hk g-hk-m g-flotte g-retard", "svt")}<span class="g-puce">2e chance</span></div></div>
+    <h2 class="g-titre">Tu bloques&nbsp;? Pas grave&nbsp;!</h2>
+    <p class="g-texte">Demande un indice, ou réessaie : tu as toujours une deuxième chance. Les erreurs, ça aide à apprendre.</p>`});
+  s.push({id:"classe", fond:"en", html:() => `
+    <div class="g-scene g-scene-p">${haiko(6, "g-hk g-hk-m g-flotte", "en")}</div>
+    <h2 class="g-titre">Tu es en quelle classe&nbsp;?</h2>
+    <p class="g-texte">Tu pourras changer à tout moment.</p>
+    <div class="g-classes" role="group" aria-label="Classe">${NIVEAUX.map((n, i) => { const dispo = Object.values(SUJETS).some(o => (o.n || 0) === i);
+      return `<button ${dispo ? `data-gclasse="${i}"` : "disabled"} aria-pressed="${G.classe === i}">${n.classe}${dispo ? "" : "<small>bientôt</small>"}</button>`; }).join("")}</div>`});
+  return s;
+}
+
+function guideOuvrir(){
+  G = {i:0, dir:1, nom:S.nom || "", avaitNom:!!S.nom, classe:S.voir || 0, mat:null};
+  G.slides = gSlides();
+  document.body.classList.add("g-ouvert");
+  gRendre();
+}
+function gRendre(){
+  gStop();
+  const sl = G.slides[G.i], der = G.i === G.slides.length - 1;
+  const nomManque = sl.id === "nom" && !G.nom.trim();
+  dlgSlot.innerHTML = `<div class="guide g-fond-${sl.fond}" role="dialog" aria-modal="true" aria-label="Découvre Ohay avec Haiko">
+    <div class="g-halo"></div>
+    <div class="g-haut">${G.i > 0 ? `<button class="g-rond" data-g="prec" aria-label="Précédent"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>` : `<img class="g-logo" src="${LOGO}" alt="Ohay">`}
+      <div class="g-points" aria-hidden="true">${G.slides.map((x, k) => `<i class="${k === G.i ? "on" : k < G.i ? "vu" : ""}"></i>`).join("")}</div>
+      ${der ? `<span class="g-rond-vide"></span>` : `<button class="g-passer" data-g="passer">Passer</button>`}</div>
+    <div class="g-corps"><div class="g-slide ${gMoinsAnim() ? "" : G.dir > 0 ? "g-in-d" : "g-in-g"}" data-slide="${sl.id}">${sl.html()}</div></div>
+    <div class="g-bas"><button class="btn g-btn" data-g="suiv" ${nomManque ? "disabled" : ""}>${der ? "C'est parti&nbsp;!" : G.i === 0 ? "Découvrir" : "Suivant"}</button>
+      <small class="g-compte">${G.i + 1} / ${G.slides.length}</small></div></div>`;
+  gAnimer(sl.id);
+  const champ = document.getElementById("g-nom");
+  if (champ){ setTimeout(() => champ.focus(), 350);
+    champ.addEventListener("input", () => { G.nom = champ.value; dlgSlot.querySelector('[data-g="suiv"]').disabled = !champ.value.trim(); });
+    champ.addEventListener("keydown", ev => { if (ev.key === "Enter" && champ.value.trim()){ ev.preventDefault(); gAller(1); } }); }
+}
+function gTeinte(m){
+  const t = dlgSlot.querySelector('[data-slide="couleurs"] .hk-teinte'); if (!t) return;
+  if (!m){ t.style.opacity = 0; return; }
+  t.style.opacity = 1; t.style.filter = `url(#hk-${m})`;
+  const g = dlgSlot.querySelector(".guide"); if (g) g.style.setProperty("--g-acc", COULEURS[m][0]);
+  dlgSlot.querySelectorAll(".g-mat").forEach(b => b.setAttribute("aria-pressed", b.dataset.gmat === m));
+  const n = dlgSlot.querySelector(".g-mat-nom"); if (n){ n.textContent = G_NOM[m]; n.style.color = COULEURS[m][1]; }
+}
+function gAnimer(id){
+  if (id === "couleurs"){
+    let k = 0;
+    if (G.mat) return gTeinte(G.mat);
+    gTeinte(G_MAT[0]);
+    if (!gMoinsAnim()) G_T.push(setInterval(() => { if (G.mat) return; k = (k + 1) % G_MAT.length; gTeinte(G_MAT[k]); }, 1100));
+  }
+  if (id === "salut" && !gMoinsAnim()){
+    // le visage passe par toutes les couleurs, puis revient au jaune
+    const t = dlgSlot.querySelector(".hk-teinte"); if (!t) return; t.style.opacity = 0; let k = -1;
+    G_T.push(setInterval(() => { k++; if (k >= G_MAT.length){ t.style.opacity = 0; k = -2; return; } if (k < 0) return; t.style.opacity = 1; t.style.filter = `url(#hk-${G_MAT[k]})`; }, 900));
+  } else if (id === "salut"){ const t = dlgSlot.querySelector(".hk-teinte"); if (t) t.style.opacity = 0; }
+}
+function gAller(d){
+  const sl = G.slides[G.i];
+  if (d > 0 && sl.id === "nom"){ if (!G.nom.trim()) return; S.nom = G.nom.trim(); sauver(); }
+  if (d > 0 && G.i === G.slides.length - 1) return gFinir();
+  G.i = Math.max(0, Math.min(G.slides.length - 1, G.i + d)); G.dir = d; gRendre();
+}
+function gFinir(passe){
+  gStop();
+  if (!S.nom) S.nom = G.nom.trim() || "";
+  S.voir = G.classe; S.guide = 1; sauver();
+  dlgSlot.innerHTML = ""; document.body.classList.remove("g-ouvert");
+  G = null;
+  if (vue() !== "accueil") location.hash = "accueil"; else rendre();
+  if (!S.nom){ demanderNom(); return; }
+  if (!passe) setTimeout(tourDemarrer, 450);
+}
+dlgSlot.addEventListener("click", ev => {
+  if (!G) return;
+  const b = ev.target.closest("[data-g],[data-gmat],[data-gclasse]"); if (!b) return;
+  if (b.dataset.g === "suiv") gAller(1);
+  else if (b.dataset.g === "prec") gAller(-1);
+  else if (b.dataset.g === "passer") gFinir(true);
+  else if (b.dataset.gmat){ G.mat = b.dataset.gmat; gTeinte(G.mat); }
+  else if (b.dataset.gclasse !== undefined){ G.classe = Number(b.dataset.gclasse); dlgSlot.querySelectorAll("[data-gclasse]").forEach(x => x.setAttribute("aria-pressed", x === b)); }
+});
+// glisser du doigt pour changer d'écran
+(function(){ let x0 = null, y0 = 0;
+  dlgSlot.addEventListener("touchstart", ev => { if (!G || ev.target.closest("input")) return; x0 = ev.touches[0].clientX; y0 = ev.touches[0].clientY; }, {passive:true});
+  dlgSlot.addEventListener("touchend", ev => { if (!G || x0 === null) return; const dx = ev.changedTouches[0].clientX - x0, dy = ev.changedTouches[0].clientY - y0; x0 = null;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5){ if (dx < 0){ const b = dlgSlot.querySelector('[data-g="suiv"]'); if (b && !b.disabled) gAller(1); } else if (G.i > 0) gAller(-1); } }, {passive:true});
+})();
+document.addEventListener("keydown", ev => {
+  if (G){ if (ev.target.matches && ev.target.matches("input")) return;
+    if (ev.key === "ArrowRight"){ const b = dlgSlot.querySelector('[data-g="suiv"]'); if (b && !b.disabled) gAller(1); }
+    if (ev.key === "ArrowLeft" && G.i > 0) gAller(-1);
+    if (ev.key === "Escape") gFinir(true); }
+  else if (T && ev.key === "Escape") tourFinir();
+  else if (T && (ev.key === "ArrowRight" || ev.key === "Enter")) tourSuivant();
+});
+
+/* ---------- visite guidée sur le vrai écran ---------- */
+let T = null;
+const visible = el => { if (!el) return false; const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && getComputedStyle(el).visibility !== "hidden"; };
+function tourEtapes(){
+  const nav = visible(document.getElementById("dock")) ? document.getElementById("dock") : document.getElementById("nav-side");
+  return [
+    {el:() => document.querySelector(".matieres .matiere:not(.ferme)"), pose:2, titre:"Choisis une matière", texte:"Touche une carte pour voir ses chapitres et commencer une leçon."},
+    {el:() => document.querySelector(".filtres"), pose:9, titre:"Ta classe", texte:"Ici, tu passes de la 6ème à la 5ème… Tes étoiles et tes héros te suivent."},
+    {el:() => document.querySelector(".cours.avec-icone"), pose:5, titre:"Reprendre", texte:"Ta prochaine leçon t'attend ici. Un seul geste pour continuer."},
+    {el:() => nav, pose:4, titre:"Le menu", texte:"Accueil, Cours, Progrès pour voir tes étoiles et tes héros, et Prof pour la classe."}
+  ].filter(e => visible(e.el()));
+}
+function tourDemarrer(){
+  const et = tourEtapes(); if (!et.length) return;
+  T = {i:0, et};
+  const d = document.createElement("div"); d.className = "tour"; d.innerHTML = `<div class="tour-trou"></div><div class="tour-bulle" role="dialog" aria-live="polite"></div>`;
+  document.body.appendChild(d); T.d = d;
+  d.addEventListener("click", ev => { const b = ev.target.closest("[data-t]"); if (!b) return; b.dataset.t === "fin" ? tourFinir() : tourSuivant(); });
+  T.maj = () => tourPlacer(); addEventListener("resize", T.maj);
+  tourPlacer(true);
+}
+function tourPlacer(scroll){
+  if (!T) return;
+  const e = T.et[T.i], el = e.el(); if (!el) return tourSuivant();
+  if (scroll){ el.scrollIntoView({block:"center", behavior: gMoinsAnim() ? "auto" : "smooth"}); setTimeout(() => tourPlacer(false), gMoinsAnim() ? 0 : 420); return; }
+  const r = el.getBoundingClientRect(), m = 8, trou = T.d.querySelector(".tour-trou"), bulle = T.d.querySelector(".tour-bulle");
+  const rad = Math.min(28, r.height / 2 + m);
+  Object.assign(trou.style, {left:(r.left - m) + "px", top:(r.top - m) + "px", width:(r.width + 2*m) + "px", height:(r.height + 2*m) + "px", borderRadius:rad + "px"});
+  const der = T.i === T.et.length - 1;
+  bulle.innerHTML = `${haiko(e.pose, "tour-hk", "")}<div><b>${e.titre}</b><p>${e.texte}</p>
+    <div class="tour-actions"><button class="btn tour-btn" data-t="suiv">${der ? "J'ai compris" : "Suivant"}</button>${der ? "" : `<button class="tour-passer" data-t="fin">Passer</button>`}<small>${T.i + 1}/${T.et.length}</small></div></div>`;
+  const W = innerWidth, H = innerHeight, bw = Math.min(360, W - 24);
+  bulle.style.width = bw + "px";
+  const bh = bulle.offsetHeight || 170;
+  const enBas = r.bottom + m + 14 + bh < H - 10 || r.top < bh + 40;
+  let top = enBas ? r.bottom + m + 14 : r.top - m - 14 - bh;
+  top = Math.max(10, Math.min(H - bh - 10, top));
+  let left = r.left + r.width / 2 - bw / 2; left = Math.max(12, Math.min(W - bw - 12, left));
+  bulle.style.left = left + "px"; bulle.style.top = top + "px";
+  bulle.classList.remove("tour-pop"); void bulle.offsetWidth; bulle.classList.add("tour-pop");
+  const b = bulle.querySelector('[data-t="suiv"]'); if (b) b.focus({preventScroll:true});
+}
+function tourSuivant(){ if (!T) return; if (T.i >= T.et.length - 1) return tourFinir(); T.i++; tourPlacer(true); }
+function tourFinir(){ if (!T) return; removeEventListener("resize", T.maj); T.d.remove(); T = null; }
+
+/* au premier démarrage */
+if (!S.guide) guideOuvrir(); else if (!S.nom) demanderNom();
 
 </script>
 <script>if("serviceWorker" in navigator) addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));</script>
